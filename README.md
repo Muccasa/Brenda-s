@@ -1,1 +1,1 @@
-# practice-coding
+# Brenda's E-Commerce
