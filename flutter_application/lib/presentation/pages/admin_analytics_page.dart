@@ -7,7 +7,7 @@ class AdminAnalyticsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Analytics')),
-      body: const Center(child: Text('Analytics dashboard placeholder')),
+      body: const Center(child: Text('Analytics dashboard placeholder (Could Have)')),
     );
   }
 }

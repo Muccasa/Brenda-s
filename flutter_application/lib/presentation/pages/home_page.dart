@@ -3,6 +3,7 @@ import 'package:flutter_application/core/utils/logger.dart';
 import 'package:flutter_application/features/products/products_page.dart';
 import 'package:flutter_application/presentation/pages/admin_analytics_page.dart';
 import 'package:flutter_application/presentation/pages/chat_support_page.dart';
+import 'package:flutter_application/presentation/pages/ai_recommendations_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,6 +23,9 @@ class HomePage extends StatelessWidget {
           }),
           _featureTile(context, 'Analytics', 'Admin analytics dashboard', () {
             Navigator.push(context, MaterialPageRoute(builder: (_) => const AdminAnalyticsPage()));
+          }),
+          _featureTile(context, 'Recommendations', 'AI product recommendations', () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) => const AIRecommendationsPage()));
           }),
           _featureTile(context, 'Chat Support', 'Contact support', () {
             Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatSupportPage()));
