@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_application/presentation/services/chat_service.dart';
 import 'package:flutter_application/presentation/models/chat_message.dart';
+import 'package:flutter_application/core/constants/app_constants.dart';
 
 class AIChatPage extends StatefulWidget {
   const AIChatPage({super.key});
@@ -50,6 +52,32 @@ class _AIChatPageState extends State<AIChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    // If running on web and no server-proxy is configured, show a helpful warning.
+    if (kIsWeb && AppConstants.openAiFunctionUrl.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('AI Chat Support')),
+        body: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              Icon(Icons.warning_amber_rounded, size: 64, color: Colors.orange),
+              SizedBox(height: 16),
+              Text('Server proxy is not configured', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              SizedBox(height: 12),
+              Text(
+                'For security, the web app must call a server-side proxy to use OpenAI.\n\n'
+                'Please deploy the Cloud Function and set `openAiFunctionUrl` in `lib/core/constants/app_constants.dart`.',
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 12),
+              Text('Use the functions/README.md in the project for deploy steps.', textAlign: TextAlign.center),
+            ],
+          ),
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(title: const Text('AI Chat Support')),
       body: Column(
