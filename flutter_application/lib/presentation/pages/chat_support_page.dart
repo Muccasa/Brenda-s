@@ -7,7 +7,7 @@ class ChatSupportPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Chat Support')),
-      body: const Center(child: Text('Chat support placeholder (Could Have)')),
+      body: const Center(child: Text('Chat support placeholder')),
     );
   }
 }
