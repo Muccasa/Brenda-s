@@ -1,0 +1,89 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "This is seed data creation, only authorized users should run this.") {
+  user_insertMany(data: [
+    {
+      id: "b4d00d11-1234-5678-90ab-cdef01234567",
+      email: "testuser1@example.com",
+      displayName: "Test User One",
+      createdAt: "2023-01-01T10:00:00Z",
+      isAdmin: false
+    },
+    {
+      id: "b4d00d12-1234-5678-90ab-cdef01234567",
+      email: "testuser2@example.com",
+      displayName: "Test User Two",
+      createdAt: "2023-01-02T11:00:00Z",
+      isAdmin: true
+    }
+  ])
+  category_insertMany(data: [
+    {
+      id: "c4t3g0ry-1234-5678-90ab-cdef01234567",
+      name: "Electronics",
+      description: "Devices and gadgets.",
+      createdAt: "2023-01-03T12:00:00Z"
+    },
+    {
+      id: "c4t3g0ry-1234-5678-90ab-cdef01234568",
+      name: "Books",
+      description: "Literature and educational materials.",
+      createdAt: "2023-01-04T13:00:00Z"
+    }
+  ])
+  product_insertMany(data: [
+    {
+      id: "pr0duc7-1234-5678-90ab-cdef01234567",
+      name: "Smartphone X",
+      description: "Latest model smartphone with advanced features.",
+      price: 999.99,
+      stockQuantity: 100,
+      createdAt: "2023-01-05T14:00:00Z",
+      imageUrl: "https://example.com/smartphone_x.jpg",
+      weight: 0.2
+    },
+    {
+      id: "pr0duc7-1234-5678-90ab-cdef01234568",
+      name: "Fantasy Novel",
+      description: "An epic fantasy adventure novel.",
+      price: 15.50,
+      stockQuantity: 500,
+      createdAt: "2023-01-06T15:00:00Z",
+      imageUrl: "https://example.com/fantasy_novel.jpg",
+      weight: 0.5
+    }
+  ])
+  productCategory_insertMany(data: [
+    {
+      productId: "pr0duc7-1234-5678-90ab-cdef01234567",
+      categoryId: "c4t3g0ry-1234-5678-90ab-cdef01234567"
+    },
+    {
+      productId: "pr0duc7-1234-5678-90ab-cdef01234568",
+      categoryId: "c4t3g0ry-1234-5678-90ab-cdef01234568"
+    }
+  ])
+  order_insertMany(data: [
+    {
+      id: "0rd3r-1234-5678-90ab-cdef01234567",
+      userId: "b4d00d11-1234-5678-90ab-cdef01234567",
+      orderDate: "2023-01-07T16:00:00Z",
+      totalAmount: 999.99,
+      status: "Processing"
+    }
+  ])
+  orderItem_insertMany(data: [
+    {
+      orderId: "0rd3r-1234-5678-90ab-cdef01234567",
+      productId: "pr0duc7-1234-5678-90ab-cdef01234567",
+      quantity: 1,
+      priceAtTimeOfPurchase: 999.99
+    }
+  ])
+  cartItem_insertMany(data: [
+    {
+      userId: "b4d00d11-1234-5678-90ab-cdef01234567",
+      productId: "pr0duc7-1234-5678-90ab-cdef01234568",
+      quantity: 2,
+      createdAt: "2023-01-08T17:00:00Z"
+    }
+  ])
+}
